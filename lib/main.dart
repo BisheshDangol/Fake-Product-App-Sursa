@@ -1,5 +1,7 @@
 import 'package:fake_products_app/features/products/presentation/product_list.dart';
+import 'package:fake_products_app/features/products/provider/product_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ProductList(),
+      home: MultiProvider(providers: [
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
+      ], child: ProductList()),
     );
   }
 }
